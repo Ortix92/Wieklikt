@@ -1,16 +1,22 @@
-## Laravel PHP Framework
+## Wieklikt.nl -  Built on Laravel 4.0.7
 
 [![Latest Stable Version](https://poser.pugx.org/laravel/framework/version.png)](https://packagist.org/packages/laravel/framework) [![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.png)](https://packagist.org/packages/laravel/framework) [![Build Status](https://travis-ci.org/laravel/framework.png)](https://travis-ci.org/laravel/framework)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, and caching.
+Welcome to the git repository of Wieklikt.nl. With Wieklikt.nl we aim to bring people closer together on a more familiar basis. No hassle with meeting strangers through countless sites and applications. Wieklikt.nl offers a platform to become something more than friends with people from your Facebook friendlist.
 
-Laravel aims to make the development process a pleasing one for the developer without sacrificing application functionality. Happy developers make the best code. To this end, we've attempted to combine the very best of what we have seen in other web frameworks, including frameworks implemented in other languages, such as Ruby on Rails, ASP.NET MVC, and Sinatra.
+At Wieklikt.nl we believe that the person you want to spend more time with should not be a stranger but a friend of yours. We are not one of the countless platforms which allows you to meet people. No, we assume that you have already met these people and that one of them is the one you want to be with.
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+This is exactly what Wieklikt.nl aims to do. We help people taking the next step and probably the hardest step of all; taking that person out on a date.
 
-## Official Documentation
+Wij zijn wieklikt, met wie klik jij?
+
+## Official Documentation of Laravel
 
 Documentation for the entire framework can be found on the [Laravel website](http://laravel.com/docs).
+
+## Unofficial handguide to Laravel
+
+A great piece of [writing](http://codebright.daylerees.com/introduction) to help you further along with this framework.
 
 ### Contributing To Laravel
 
