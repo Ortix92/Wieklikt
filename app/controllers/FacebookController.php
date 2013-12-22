@@ -9,7 +9,7 @@ class FacebookController extends BaseController {
     public function getFb() {
         $facebook = new Facebook(Config::get('facebook'));
         $params = array(
-            'redirect_uri' => url('/login/fb/callback'),
+            'redirect_uri' => url('/login/fb-callback'),
             'scope' => 'email',
         );
         return Redirect::to($facebook->getLoginUrl($params));
