@@ -11,9 +11,11 @@ class ApplicationController extends BaseController {
         $data = new stdClass;
         $facebook = new Facebook(Config::get('facebook'));
         $friendsList = $facebook->api('/me/friends');
+        //dd($friendsList["data"]);
+        Session::put("friends", $friendsList['data']);
         $me = Auth::user();
         if (Auth::check()) {
-            return View::make('list', array('friendsList' => $friendsList, 'me' => $me));
+            return View::make('jList', array('friendsList' => $friendsList, 'me' => $me));
         } else {
             return Redirect::to('/');
         }
@@ -33,17 +35,28 @@ class ApplicationController extends BaseController {
             $click->save();
 
             $event = Event::fire('application.click');
-            
+
             return $this->getMatch();
         }
     }
 
     public function getMatch() {
-        $clicks = Click::where('clicker','=',Auth::user()->id)->get();
-        foreach($clicks as $click) {
+        $clicks = Click::where('clicker', '=', Auth::user()->id)->get();
+        foreach ($clicks as $click) {
             echo $click->clickee . "\n";
         }
-        
+    }
+
+    public function getFriends() {
+        $friends = Session::get("friends");
+        $needle = Input::get("term");
+        $sortedFriends = array();
+        foreach ($friends as $key => $friend) {
+            if (stristr($friend["name"], $needle)) {
+                $sortedFriends[] = $friend;
+            }
+        }
+        return json_encode($sortedFriends);
     }
 
 }
