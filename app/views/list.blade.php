@@ -4,6 +4,8 @@
 <html>
     <head>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"></script>
+        <script src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
         <style>
             .profileImage img:hover {
                 cursor: pointer;
