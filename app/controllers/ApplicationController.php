@@ -8,7 +8,6 @@ class ApplicationController extends BaseController {
          * @todo It is necessary to test if it's faster to pass the friends array
          * to this method, or to get it here.
          */
-        $data = new stdClass;
         $facebook = new Facebook(Config::get('facebook'));
         $friendsList = $facebook->api('/me/friends');
         //dd($friendsList["data"]);
@@ -31,7 +30,16 @@ class ApplicationController extends BaseController {
 
             $click = new Click();
             $click->clickee = $id;
-            $click->clicker = Auth::user()->id;
+            if (!Session::has("facebookid")) {
+                $click->clicker = Session::get("facebookid");
+            } else {
+                 $click->clicker = Auth::user()->profiles->uid;
+            }
+
+            if (!isset($click->clicker)) {
+                // Session expired or something twonky going on, login again
+                Redirect::to("/");
+            }
             $click->save();
 
             $event = Event::fire('application.click');
@@ -41,9 +49,11 @@ class ApplicationController extends BaseController {
     }
 
     public function getMatch() {
-        $clicks = Click::where('clicker', '=', Auth::user()->id)->get();
-        foreach ($clicks as $click) {
-            echo $click->clickee . "\n";
+        $clicks = Click::where('clickee', '=', Auth::user()->id)->get();
+        if (Auth::check()) {
+            return View::make('matches', array('clicks' => $clicks));
+        } else {
+            return Redirect::to("/");
         }
     }
 
