@@ -30,26 +30,31 @@ class ApplicationController extends BaseController {
 
             $click = new Click();
             $click->clickee = $id;
-            if (!Session::has("facebookid")) {
-                $click->clicker = Session::get("facebookid");
-            } else {
-                 $click->clicker = Auth::user()->profiles->uid;
-            }
+            
+            
+            $click->clicker = Auth::user()->getProfileID();
 
             if (!isset($click->clicker)) {
                 // Session expired or something twonky going on, login again
+                // Should we pass a message? 
                 Redirect::to("/");
             }
-            $click->save();
-
-            $event = Event::fire('application.click');
+            try {
+                $click->save();
+            } catch (Exception $e) {
+                Redirect::to(URL::action("ApplicationController@getMatch"))->with("clicked","Je hebt deze gebruiker al een keer aangeklikt");
+            }
 
             return $this->getMatch();
         }
     }
 
+    /**
+     * Gets the matches
+     * @return to the matches page if user logged in. Else to homepage
+     */
     public function getMatch() {
-        $clicks = Click::where('clickee', '=', Session::get("facebookid"))->get();
+        $clicks = Click::where('clickee', '=', Session::get("facebookid"))->get()->toArray();
         if (Auth::check()) {
             return View::make('matches', array('clicks' => $clicks));
         } else {
@@ -57,6 +62,10 @@ class ApplicationController extends BaseController {
         }
     }
 
+    /**
+     * Load friends inside a json encode object for displaying on the main page
+     * @return json a json encoded page containing all friends from the needle in $_GET
+     */
     public function getFriends() {
         $friends = Session::get("friends");
         $needle = Input::get("term");

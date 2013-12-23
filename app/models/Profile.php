@@ -6,4 +6,8 @@ class Profile extends Eloquent {
         return $this->belongsTo('User');
     }
 
+    public function clicks() {
+        return $this->hasMany('Click');
+    }
+
 }
