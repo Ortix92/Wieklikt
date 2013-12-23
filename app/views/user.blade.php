@@ -9,28 +9,42 @@
         
         <!-- Stylesheets -->
         <link rel="stylesheet" href="assets/css/bootstrap.css">
+        <link rel="stylesheet" href="assets/css/bootstrap-theme.css">
     </head>
     <body>
         <div class="container">
         <?php if (!empty($data)): ?>
-            
+            <header>
+                <h1>Hello, <?php echo e($data['name']); ?></h1>
+            </header>
+            <div class="navbar">
+                <ul class="nav navbar-nav">
+                    <li class="active">Home</li>
+                    <li><a href="app">Naar de App</a></li>
+                    <li><a href="logout">Logout</a></li>
+                </ul>
+            </div>
             <p>
-                Hello, <?php echo e($data['name']); ?>
+                
                 <img src="<?php echo $data['photo']; ?>">
             </p>
             <p>
                 Your email is <?php echo $data['email']; ?>
             </p>
-            <p>
-                <a href="app">Naar de App</a>
-                <a href="logout">Logout</a>
-            </p>
             
         <!-- end of logged in -->
         <?php else: ?>
-            
+            <header>
+                <h1>Hello there,</h1>
+            </header>
+            <div class="navbar">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/">Home</a></li>
+                    <li> <a href="login/fb">Login</a></li>
+                </ul>
+            </div>
             <p>
-                Hi! Would you like to <a href="login/fb">Login with Facebook</a>? 
+                Would you like to <a href="login/fb">Login with Facebook</a>? 
             </p>
             
         <?php endif; ?>
