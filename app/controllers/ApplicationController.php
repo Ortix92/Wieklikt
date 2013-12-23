@@ -49,7 +49,7 @@ class ApplicationController extends BaseController {
     }
 
     public function getMatch() {
-        $clicks = Click::where('clickee', '=', Auth::user()->id)->get();
+        $clicks = Click::where('clickee', '=', Session::get("facebookid"))->get();
         if (Auth::check()) {
             return View::make('matches', array('clicks' => $clicks));
         } else {
