@@ -30,19 +30,19 @@ class ApplicationController extends BaseController {
 
             $click = new Click();
             $click->clickee = $id;
-            if (!Session::has("facebookid")) {
-                $click->clicker = Session::get("facebookid");
-            } else {
-                 $click->clicker = Auth::user()->profiles->uid;
-            }
+            
+            
+            $click->clicker = Auth::user()->getProfileID();
 
             if (!isset($click->clicker)) {
                 // Session expired or something twonky going on, login again
                 Redirect::to("/");
             }
-            $click->save();
-
-            $event = Event::fire('application.click');
+            try {
+                $click->save();
+            } catch (Exception $e) {
+                Redirect::to(URL::action("ApplicationController@getMatch"))->with("clicked","Je hebt deze gebruiker al een keer aangeklikt");
+            }
 
             return $this->getMatch();
         }
