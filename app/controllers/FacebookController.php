@@ -24,7 +24,7 @@ class FacebookController extends BaseController {
         $facebook = new Facebook(Config::get('facebook'));
         $uid = $facebook->getUser();
         Session::set("facebookid", $uid);
-        
+
         if ($uid == 0)
             return Redirect::to('/')->with('message', 'There was an error');
 
@@ -45,7 +45,7 @@ class FacebookController extends BaseController {
             $profile = new Profile();
             $profile->uid = $uid;
             $profile->username = $me['username'];
-            $profile = $user->profiles()->save($profile);
+            $profile = $user->profile()->save($profile);
         }
 
         $profile->access_token = $facebook->getAccessToken();

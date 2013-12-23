@@ -2,8 +2,8 @@
 
 class Click extends Eloquent {
 
-    public function user() {
-        return $this->belongsTo('User');
+    public function profile() {
+        return $this->belongsTo('Profile');
     }
 
 }

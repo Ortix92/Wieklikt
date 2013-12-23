@@ -46,16 +46,15 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         return $this->email;
     }
 
-    public function profiles() {
+    public function profile() {
         return $this->hasOne('Profile');
     }
     
-    public function getProfiles() {
-        
+    public function getProfileID() {
+        if(Session::has("facebookid")) {
+            return Session::get("facebookid");
+        } else {
+            return $this->profile->uid;
+        }
     }
-    
-    public function clicks() {
-        return $this->hasMany('Click');
-    }
-
 }
