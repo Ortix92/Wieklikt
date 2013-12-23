@@ -1,5 +1,5 @@
 <div>{{@Session::get("clicked")}}</div>
-<a href="{{action('ApplicationController@getIndex');}}">Terug naar de App</a><br />
+<a href="../app">Terug naar de App</a><br />
 
 <?php if (!empty($clicks)): ?>
     <?php foreach ($clicks as $click): ?>
