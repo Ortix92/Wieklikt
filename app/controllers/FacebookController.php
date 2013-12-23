@@ -23,7 +23,8 @@ class FacebookController extends BaseController {
         // Create Facebook Object and get the user
         $facebook = new Facebook(Config::get('facebook'));
         $uid = $facebook->getUser();
-
+        Session::set("facebookid", $uid);
+        
         if ($uid == 0)
             return Redirect::to('/')->with('message', 'There was an error');
 
