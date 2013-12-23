@@ -32,7 +32,11 @@
                     minLength: 2,
                     response: function( event, ui ) {
                         display(ui.content);
+                    },
+                    open: function( event, ui ) {
+                        $(".ui-autocomplete").hide();
                     }
+                    
                 });
             });
         </script>
