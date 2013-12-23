@@ -36,6 +36,7 @@ class ApplicationController extends BaseController {
 
             if (!isset($click->clicker)) {
                 // Session expired or something twonky going on, login again
+                // Should we pass a message? 
                 Redirect::to("/");
             }
             try {
@@ -48,8 +49,12 @@ class ApplicationController extends BaseController {
         }
     }
 
+    /**
+     * Gets the matches
+     * @return to the matches page if user logged in. Else to homepage
+     */
     public function getMatch() {
-        $clicks = Click::where('clickee', '=', Session::get("facebookid"))->get();
+        $clicks = Click::where('clickee', '=', Session::get("facebookid"))->get()->toArray();
         if (Auth::check()) {
             return View::make('matches', array('clicks' => $clicks));
         } else {
@@ -57,6 +62,10 @@ class ApplicationController extends BaseController {
         }
     }
 
+    /**
+     * Load friends inside a json encode object for displaying on the main page
+     * @return json a json encoded page containing all friends from the needle in $_GET
+     */
     public function getFriends() {
         $friends = Session::get("friends");
         $needle = Input::get("term");
