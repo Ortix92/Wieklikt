@@ -9,6 +9,7 @@
         <!-- Stylesheets -->
         <link rel="stylesheet" href="assets/css/bootstrap.css">
         <link rel="stylesheet" href="assets/css/bootstrap-theme.css">
+        <link rel="stylesheet" href="assets/css/wieklikt.css">
         
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"></script>
@@ -25,7 +26,8 @@
            <p class="text-danger"><?php echo Session::get('message'); ?></p>
         <?php endif; ?>
         
-        <!-- Begin navigation for logged-in user -->
+<div id="wrap">      
+          <!-- Begin navigation for logged-in user -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="container">
@@ -45,6 +47,8 @@
                         <li><a href="/">Home</a></li>
                         <li class="active"><a href="app">Naar de app</a></li>
                         <li><a href="{{action('ApplicationController@getMatch');}}">Matches</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
                         <li><a href="logout">Logout</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->    
@@ -77,6 +81,13 @@
             <?php endfor; ?>
             </div>
         </div>
+</div>
+<footer>
+    <div class="container">
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2013 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    </div>
+</footer>
 
         <!-- Javascript -->
         <script type="text/javascript">
