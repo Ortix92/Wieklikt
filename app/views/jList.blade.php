@@ -44,6 +44,7 @@
                     <ul class="nav navbar-nav">
                         <li><a href="/">Home</a></li>
                         <li class="active"><a href="app">Naar de app</a></li>
+                        <li><a href="{{action('ApplicationController@getMatch');}}">Matches</a></li>
                         <li><a href="logout">Logout</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->    
@@ -53,10 +54,12 @@
         
         <div class="container">
             <h1>Klikken maar!</h1>
-            <p>
-                <input id="search" type="text" placeholder="Search friends..." />
-                <a href="{{action('ApplicationController@getMatch');}}">Matches</a>
-            </p>
+            <div class="container">
+                <p>
+                    <input id="search" type="text" placeholder="Search friends..." />
+                </p>
+            </div>
+            
             
             <?php $friends = $friendsList['data']; ?>
     
