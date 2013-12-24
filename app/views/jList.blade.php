@@ -54,13 +54,10 @@
         
         <div class="container">
             <h1>Klikken maar!</h1>
-            <div class="container">
-                <p>
-                    <input id="search" type="text" placeholder="Search friends..." />
-                </p>
-            </div>
-            
-            
+            <p>
+                <input id="search" type="text" class="form-control input-lg" placeholder="Search friends..." />  
+            </p>
+            <div class="row">
             <?php $friends = $friendsList['data']; ?>
     
             <?php for ($i = 0; $i < 100; $i++): ?>
@@ -68,16 +65,19 @@
                     $id = $friends[$i]['id'];
                     $name = $friends[$i]['name'];
                 ?>
+                <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2">
                 <a href="/app/click/<?php echo $id ?>">
                     <img    
                             class="img-rounded" 
-                            src="https://graph.facebook.com/<?php echo $id; ?>/picture?width=200&height=200" 
+                            src="https://graph.facebook.com/<?php echo $id; ?>/picture?width=156&height=156" 
                             title="<?php echo $name ?>" 
                             alt="<?php echo $name ?>" 
                             width="200px" 
                     />
                 </a>
+                </div>
             <?php endfor; ?>
+            </div>
         </div>
 
         <!-- Javascript -->
