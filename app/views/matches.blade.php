@@ -55,7 +55,7 @@
             <?php if (!empty($clicks)): ?>
             <h1>Woehoehoe</h1>
             <?php foreach ($clicks as $click): ?>
-            <a href="http://facebook.com/<?php echo $click["clicker"]; ?>"><img id="<?php echo $click["clicker"]; ?>" src="https://graph.facebook.com/<?php echo $click["clicker"]; ?>/picture?width=200&height=200 " /></a>           
+            <a href="http://facebook.com/<?php echo $click["clicker"]; ?>"><img class="img-circle" id="<?php echo $click["clicker"]; ?>" src="https://graph.facebook.com/<?php echo $click["clicker"]; ?>/picture?width=200&height=200 " /></a>           
             <?php endforeach; ?>
             <?php else: ?><!-- Geen matches -->
             <h1>Jammer joh!</h1>
