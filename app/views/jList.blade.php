@@ -65,16 +65,14 @@
                     $id = $friends[$i]['id'];
                     $name = $friends[$i]['name'];
                 ?>
-                <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2">
-                <a href="/app/click/<?php echo $id ?>">
-                    <img    
-                            class="img-rounded" 
-                            src="https://graph.facebook.com/<?php echo $id; ?>/picture?width=156&height=156" 
-                            title="<?php echo $name ?>" 
-                            alt="<?php echo $name ?>" 
-                            width="200px" 
-                    />
-                </a>
+                <div class="col-xs-6 col-sm-4 col-md-2" style="padding-top: 15px; padding-bottom: 15px;">
+                    <a href="/app/click/<?php echo $id ?>">
+                        <img    class="img-circle img-responsive" 
+                                src="https://graph.facebook.com/<?php echo $id; ?>/picture?width=200&height=200" 
+                                title="<?php echo $name ?>" 
+                                alt="<?php echo $name ?>" 
+                                width="200px" />
+                    </a>
                 </div>
             <?php endfor; ?>
             </div>
