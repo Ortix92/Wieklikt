@@ -48,16 +48,18 @@
                         <li class="active"><a href="app">Naar de app</a></li>
                         <li><a href="{{action('ApplicationController@getMatch');}}">Matches</a></li>
                     </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="logout">Logout</a></li>
-                    </ul>
+                    <div class="nav navbar-right">
+                        <a href="logout" class="btn btn-default navbar-btn" role="button">Logout</a>
+                    </div>
                 </div><!-- /.navbar-collapse -->    
             </div>
         </nav>
         <!-- End navigation for logged-in user --> 
         
         <div class="container">
-            <h1>Klikken maar!</h1>
+            <div class="page-header">
+                <h1>Klikken maar!</h1>
+            </div>
             <p>
                 <input id="search" type="text" class="form-control input-lg" placeholder="Search friends..." />  
             </p>
@@ -69,13 +71,14 @@
                     $id = $friends[$i]['id'];
                     $name = $friends[$i]['name'];
                 ?>
-                <div class="col-xs-6 col-sm-4 col-md-2" style="padding-top: 15px; padding-bottom: 15px;">
+                <div class="col-xs-6 col-sm-4 col-md-2 fb-friend">
                     <a href="/app/click/<?php echo $id ?>">
-                        <img    class="img-circle img-responsive" 
+                        <img    class="img-rounded img-responsive" 
                                 src="https://graph.facebook.com/<?php echo $id; ?>/picture?width=200&height=200" 
                                 title="<?php echo $name ?>" 
                                 alt="<?php echo $name ?>" 
                                 width="200px" />
+                                <p class="text-center"><?php echo $name ?></p>
                     </a>
                 </div>
             <?php endfor; ?>

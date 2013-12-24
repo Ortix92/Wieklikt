@@ -21,3 +21,9 @@ footer {
     background: rgb(218, 223, 228);
     border-top: 4px solid rgb(172, 178, 184);
 }
+
+
+#fb-friend a p {
+    height: 15px;
+    overflow: hidden;
+}

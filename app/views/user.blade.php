@@ -42,9 +42,9 @@
                         <li class="active"><a href="/">Home</a></li>
                         <li><a href="app">Naar de app</a></li>
                     </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="logout">Logout</a></li>
-                    </ul>
+                    <div class="nav navbar-right">
+                        <a href="logout" class="btn btn-default navbar-btn" role="button">Logout</a>
+                    </div>
                 </div><!-- /.navbar-collapse -->    
             </div>
         </nav>
@@ -52,9 +52,9 @@
         
               
         <div class="container">
-            <header>
+            <div class="page-header">
                 <h1><small>Hello</small> <?php echo e($data['name']); ?></h1>
-            </header>
+            </div>
             <p>
                 <img 
                     src="<?php echo $data['photo']; ?>" 
@@ -99,9 +99,9 @@
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="/">Home</a></li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="login/fb">Login</a></li>
-                </ul>
+                <div class="nav navbar-right">
+                        <a href="login/fb" class="btn btn-primary navbar-btn" role="button">Login</a>
+                    </div>
             </div><!-- /.navbar-collapse -->    
         </div>
     </nav>
@@ -146,9 +146,9 @@
                 <span class="icon-next"></span>
             </a>
         </div>
-        <header>
+        <div class="page-header">
             <h1>Hello there,</h1>
-        </header>
+        </div>
         <p>
             Would you like to <a href="login/fb">Login with Facebook</a>? 
         </p>
