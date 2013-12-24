@@ -9,6 +9,10 @@
         <link rel="stylesheet" href="assets/css/bootstrap.css">
         <link rel="stylesheet" href="assets/css/bootstrap-theme.css">
         <link rel="stylesheet" href="assets/css/wieklikt.css">
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
     </head>
     <body style="padding-top: 50px;">
         <?php if(Session::has('message')): ?>
@@ -16,7 +20,9 @@
         <?php endif; ?>
         
         <?php if (!empty($data)): ?>
-        <!-- Begin navigation for logged-in user -->
+<div id="wrap">       
+        
+          <!-- Begin navigation for logged-in user -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="container">
@@ -35,6 +41,8 @@
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="/">Home</a></li>
                         <li><a href="app">Naar de app</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
                         <li><a href="logout">Logout</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->    
@@ -58,9 +66,18 @@
                 Your email is <a href="mailto:<?php echo $data['email']; ?>"><?php echo $data['email']; ?></a>.
             </p>
         </div>
-        <!-- end of logged in -->
         
-        <?php else: ?>
+</div>        
+<footer>
+    <div class="container">
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2013 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    </div>
+</footer>
+<!-- end of logged in -->                
+
+                
+<?php else: ?>
                 
 <div id="wrap">
     <!-- Begin navigation for not-logged-in user -->
@@ -81,6 +98,8 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="/">Home</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
                     <li><a href="login/fb">Login</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->    
@@ -145,7 +164,7 @@
         <?php endif; ?>
 
     <!-- Javascript --> 
-    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
     <script src="assets/js/bootstrap.js"></script>
     </body>
 </html>
