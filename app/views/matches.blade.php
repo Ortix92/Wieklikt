@@ -7,9 +7,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <!-- Stylesheets -->
-        <link rel="stylesheet" href="../assets/css/bootstrap.css">
-        <link rel="stylesheet" href="../assets/css/bootstrap-theme.css">
-        <link rel="stylesheet" href="../assets/css/wieklikt.css">
+        <link rel="stylesheet" href="/assets/css/bootstrap.css">
+        <link rel="stylesheet" href="/assets/css/bootstrap-theme.css">
+        <link rel="stylesheet" href="/assets/css/wieklikt.css">
         
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"></script>
