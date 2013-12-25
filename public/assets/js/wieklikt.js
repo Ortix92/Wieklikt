@@ -1,7 +1,6 @@
 $(document).ready(function() {
-
-    $(function display(friends) {
-        $("#container").empty();
+    function display(friends) {
+        $(".row").empty();
 
         $.each(friends, function(index, friend) {
             var html = '<div class="profileImage" style="float:left;padding:20px; width:200px">';
@@ -9,9 +8,10 @@ $(document).ready(function() {
             html += '<img  id="' + friend.id + ' " src="https://graph.facebook.com/' + friend.id + '/picture?width=200&height=200 " />';
             html += '</a>';
             html += '</div>';
-            $("#container").append(html);
+            $(".row").append(html);
         });
-    })
+    }
+    
     $("#search").autocomplete({
         source: "/app/friends",
         minLength: 2,
@@ -21,7 +21,7 @@ $(document).ready(function() {
         open: function(event, ui) {
             $(".ui-autocomplete").hide();
         }
-
     });
+
 });
 
