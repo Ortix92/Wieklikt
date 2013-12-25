@@ -5,3 +5,7 @@ composer.phar
 composer.lock
 .DS_Store
 /nbproject
+<<<<<<< HEAD
+=======
+/app/config/database.php
+>>>>>>> origin/frontend
