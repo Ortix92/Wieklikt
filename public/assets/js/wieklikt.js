@@ -12,7 +12,7 @@ $(document).ready(function() {
                 data: {term: request.term},
                 success: function(data) {
                     display(data);
-                    console.log(response);
+                    //console.log(response);
                 }
             });
         },
