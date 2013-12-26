@@ -79,7 +79,7 @@ class ApplicationController extends BaseController {
                 $sortedFriends[] = $friend;
             }
         }
-        return json_encode($sortedFriends);
+        return View::renderEach("friend", $sortedFriends, "friend","nofriends");
     }
 
 }
