@@ -54,7 +54,7 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'dev.wieklikt.nl',
+			'host'      => 'localhost',
 			'database'  => 'wieklikt',
 			'username'  => 'root',
 			'password'  => '',
