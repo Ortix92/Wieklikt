@@ -11,7 +11,7 @@
         <h1>Klikken maar!</h1>
     </div>
     <p>
-        <input id="search" type="text" class="form-control input-lg" placeholder="Search friends..." />  
+        <input id="search" type="text" class="form-control input-lg" placeholder="Search friends..." /> 
     </p>
     <div class="row">
         @each('friend',$friends,'friend')
