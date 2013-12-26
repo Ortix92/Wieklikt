@@ -10,11 +10,15 @@ class ApplicationController extends BaseController {
          */
         $facebook = new Facebook(Config::get('facebook'));
         $friendsList = $facebook->api('/me/friends');
-        //dd($friendsList["data"]);
         Session::put("friends", $friendsList['data']);
         $me = Auth::user();
+
+        // We truncate the friendlist for initial viewing
+        $friends = $friendsList["data"];
+        shuffle($friends);
+        $friends = array_slice($friends, 0, 40);
         if (Auth::check()) {
-            return View::make('jList', array('friendsList' => $friendsList, 'me' => $me));
+            return View::make('jList', array('friends' => $friends, 'me' => $me));
         } else {
             return Redirect::to('/');
         }
@@ -30,8 +34,8 @@ class ApplicationController extends BaseController {
 
             $click = new Click();
             $click->clickee = $id;
-            
-            
+
+
             $click->clicker = Auth::user()->getProfileID();
 
             if (!isset($click->clicker)) {
@@ -42,7 +46,7 @@ class ApplicationController extends BaseController {
             try {
                 $click->save();
             } catch (Exception $e) {
-                Redirect::to(URL::action("ApplicationController@getMatch"))->with("clicked","Je hebt deze gebruiker al een keer aangeklikt");
+                Redirect::to(URL::action("ApplicationController@getMatch"))->with("clicked", "Je hebt deze gebruiker al een keer aangeklikt");
             }
 
             return $this->getMatch();

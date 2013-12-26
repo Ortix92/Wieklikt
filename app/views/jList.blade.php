@@ -42,7 +42,7 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
                             <li><a href="/">Home</a></li>
-                            <li class="active"><a href="{{action('ApplicationController@getIndex');}}">Naar de app</a></li>
+                            <li class="active"><a href="/app">Naar de app</a></li>
                             <li><a href="{{action('ApplicationController@getMatch');}}">Matches</a></li>
                         </ul>
                         <div class="nav navbar-right">
@@ -61,24 +61,7 @@
                     <input id="search" type="text" class="form-control input-lg" placeholder="Search friends..." />  
                 </p>
                 <div class="row">
-                    <?php $friends = $friendsList['data']; ?>
-
-                    <?php for ($i = 0; $i < 100; $i++): ?>
-                        <?php
-                        $id = $friends[$i]['id'];
-                        $name = $friends[$i]['name'];
-                        ?>
-                        <div class="col-xs-6 col-sm-4 col-md-2 fb-friend">
-                            <a href="/app/click/<?php echo $id ?>">
-                                <img    class="img-rounded img-responsive" 
-                                        src="https://graph.facebook.com/<?php echo $id; ?>/picture?width=200&height=200" 
-                                        title="<?php echo $name ?>" 
-                                        alt="<?php echo $name ?>" 
-                                        width="200px" />
-                                <p class="text-center"><?php echo $name ?></p>
-                            </a>
-                        </div>
-                    <?php endfor; ?>
+                    @each('friend',$friends,'friend')
                 </div>
             </div>
         </div>
@@ -93,9 +76,9 @@
         <script src="//code.jquery.com/jquery-1.9.1.js"></script>
         <script src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
         <script type="text/javascript">
-            //            $(".profileImage").click(function() {
-            //                $(this).animate({opacity: "0.0"}).animate({width: 0}).hide(0);
-            //            })
+//            $(".profileImage").click(function() {
+//                $(this).animate({opacity: "0.0"}).animate({width: 0}).hide(0);
+//            })
         </script>
         <script src="assets/js/bootstrap.js"></script>
         <script type="text/javascript" src="/assets/js/wieklikt.js"></script>
