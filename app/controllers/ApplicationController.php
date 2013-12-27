@@ -9,14 +9,14 @@ class ApplicationController extends BaseController {
          * to this method, or to get it here.
          */
         $facebook = new Facebook(Config::get('facebook'));
-        $friendsList = $facebook->api('/me/friends');
+        $friendsList = $facebook->api('/me/friends?fields=id,name,gender');
         Session::put("friends", $friendsList['data']);
         $me = Auth::user();
 
         // We truncate the friendlist for initial viewing
         $friends = $friendsList["data"];
         shuffle($friends);
-        $friends = array_slice($friends, 0, 40);
+        $friends = array_slice($friends, 0, 42);
         if (Auth::check()) {
             return View::make('jList', array('friends' => $friends, 'me' => $me));
         } else {
@@ -54,11 +54,23 @@ class ApplicationController extends BaseController {
     }
 
     /**
+     * @return a view which displays the clicks by the user.
+     */
+    public function getClickedFriends() {
+        $clicks = Click::where('clicker', '=', Auth::user()->getProfileID())->get()->toArray();
+        if (Auth::check()) {
+            return View::make('matches', array('clicks' => $clicks));
+        } else {
+            return Redirect::to("/");
+        }
+    }
+
+    /**
      * Gets the matches
      * @return to the matches page if user logged in. Else to homepage
      */
     public function getMatch() {
-        $clicks = Click::where('clickee', '=', Session::get("facebookid"))->get()->toArray();
+        $clicks = Click::where('clickee', '=', Auth::user()->getProfileID())->get()->toArray();
         if (Auth::check()) {
             return View::make('matches', array('clicks' => $clicks));
         } else {
@@ -79,7 +91,7 @@ class ApplicationController extends BaseController {
                 $sortedFriends[] = $friend;
             }
         }
-        return View::renderEach("friend", $sortedFriends, "friend","nofriends");
+        return View::renderEach("friend", $sortedFriends, "friend", "nofriends");
     }
 
 }
