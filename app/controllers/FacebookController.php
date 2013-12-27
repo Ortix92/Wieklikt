@@ -55,7 +55,7 @@ class FacebookController extends BaseController {
 
         Auth::login($user);
 
-        return Redirect::to('/app');
+        return Redirect::to('/');
     }
 
 }
