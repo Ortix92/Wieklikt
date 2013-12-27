@@ -16,7 +16,7 @@ class ApplicationController extends BaseController {
         // We truncate the friendlist for initial viewing
         $friends = $friendsList["data"];
         shuffle($friends);
-        $friends = array_slice($friends, 0, 40);
+        $friends = array_slice($friends, 0, 42);
         if (Auth::check()) {
             return View::make('jList', array('friends' => $friends, 'me' => $me));
         } else {
