@@ -51,21 +51,38 @@
 
 
                 <div class="container">
-                    <div class="page-header">
-                        <h1><small>Hello</small> <?php echo e($data['name']); ?></h1>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="page-header">
+                                <h1><small>Hello</small> <?php echo e($data['name']); ?></h1>
+                            </div>
+                        </div>   
                     </div>
-                    <p>
-                        <img 
-                            src="<?php echo $data['photo']; ?>" 
-                            class="img-responsive img-rounded" 
-                            alt="userphoto" 
-                            />
-                    </p>
-                    <p>
-                        Your email is <a href="mailto:<?php echo $data['email']; ?>"><?php echo $data['email']; ?></a>.
-                    </p>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <ul>
+                                <li>Your email is <a href="mailto:<?php echo $data['email']; ?>"><?php echo $data['email']; ?></a>.</li>
+                                <li>Your facebook-id is: .</li>
+                                <li>You have # matches.</li>
+                                <li>You have used # of your 3 clicks this week.</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <img src="<?php echo $data['photo']; ?>" class="img-responsive img-rounded" alt="userphoto" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>
+                                <div class="progress progress-striped active">
+                                    <div class="progress-bar"  role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" style="width: 33%">
+                                        <span class="sr-only">33% Complete</span>
+                                    </div>
+                                </div>
+                            </p>
+                        </div>
+                    </div>
                 </div>
-
             </div>        
             <footer>
                 <div class="container">
