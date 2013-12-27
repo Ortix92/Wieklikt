@@ -41,12 +41,21 @@
         <span class="icon-next"></span>
     </a>
 </div>
+<p>
+<div class="progress progress-striped active">
+  <div class="progress-bar"  role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+    <span class="sr-only">0% Complete</span>
+  </div>
+</div>
+</p>
 <div class="page-header">
     <h1>Hello there,</h1>
 </div>
 <p>
     Would you like to <a href="login/fb">Login with Facebook</a>? 
 </p>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum, omnis, officiis distinctio repellat id minus ab quod numquam aliquam explicabo facere quae maxime qui doloremque repellendus deserunt mollitia. Explicabo, hic tenetur culpa beatae esse ad illum deserunt voluptates necessitatibus excepturi. Dolorum, odio, nulla, iste necessitatibus reiciendis molestiae similique dolores sint facere fugiat impedit dicta! Corporis, eaque, reprehenderit, dolores unde et optio nam sapiente magni placeat non voluptatum nisi aliquid illum doloremque perspiciatis numquam temporibus consectetur illo reiciendis laborum? Maiores, mollitia, doloribus culpa officiis qui nam excepturi recusandae tempora commodi quasi quod quis repudiandae perspiciatis quisquam quo reprehenderit blanditiis consectetur autem?</p>
+<p>This is the alpha version of wieklikt, welcome!</p>
+<p>Although the core functionality works; you can log in with facebook and click on your friends you want to date with. Other features like a maximum number of clicks, advanced sorting and detailed instrunctions are still absent.</p>
+<p>Take a look around and if you have any remarks, like bugs or ideas, feel free to mail them to <a href="mailto:thomas@wieklikt.nl">us</a>!</p>
 @stop
 
