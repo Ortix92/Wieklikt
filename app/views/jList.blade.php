@@ -5,7 +5,7 @@
 <li><a href="{{action('ApplicationController@getMatch');}}">Matches</a></li>
 @stop
 @section('main-body')
-<div id="wrap">      
+    
 
     <div class="page-header">
         <h1>Klikken maar!</h1>
@@ -24,5 +24,4 @@
         @each('friend',$friends,'friend')
     </div>
 
-</div>
 @stop

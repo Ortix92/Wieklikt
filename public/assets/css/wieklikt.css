@@ -24,3 +24,7 @@ footer {
     height: 20px;
     overflow: hidden;
 }
+
+.profileImage img:hover {
+                cursor: pointer;
+}
