@@ -1,8 +1,5 @@
-/* Sticky footer styles
------------------------- */
-
-html,
-body {
+/* Sticky footer */
+html, body {
     height: 100%;
 }
 /* Wrapper for page content to push down footer */
@@ -22,8 +19,8 @@ footer {
     border-top: 4px solid rgb(172, 178, 184);
 }
 
-
-#fb-friend a p {
-    height: 15px;
+/* Long names no longer breaks the layout, they're just hidden :D */
+.fb-friend a p {
+    height: 20px;
     overflow: hidden;
 }
