@@ -58,7 +58,9 @@
             <!-- End navigation for logged-in user --> 
 
             <div class="container">
-                @yield('main-body')
+                <div class="wrap">
+                    @yield('main-body')
+                </div>
             </div>
         </div>
         
