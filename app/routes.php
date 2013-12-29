@@ -27,23 +27,23 @@
  */
 
 Route::get('/', function() {
-    $data = array();
+            $data = array();
 
-    if (Auth::check()) {
-        $data = Auth::user();
-        return View::make('user', array('data' => $data));
-    } else {
-        return View::make('home');
-    }
-});
+            if (Auth::check()) {
+                $data = Auth::user();
+                return View::make('user', array('data' => $data));
+            } else {
+                return View::make('home');
+            }
+        });
 
 Route::get('logout', function() {
-    Auth::logout();
-    return Redirect::to('/');
-});
+            Auth::logout();
+            return Redirect::to('/');
+        });
 
 // Entry point for authentication      
-Route::controller('login', 'FacebookController');
+Route::controller('login', array('as' => 'login', 'uses' => 'FacebookController'));
 
 // Entry point for application logic
-Route::controller('app', 'ApplicationController');
+Route::controller('app', array('as' => 'application', 'uses' => 'ApplicationController'));

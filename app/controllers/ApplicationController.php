@@ -27,16 +27,17 @@ class ApplicationController extends BaseController {
     /**
      * This method saves the click relationship to the database
      * 
-     * @param string $id the ID of the person who has been clicked
+     * @param string $id the facebook uid of the person who has been clicked
      */
     public function getClick($id) {
+        //@TODO: Add check if user has clicks left
         if (Auth::check() && $id) {
-
+            $user = Auth::user();
             $click = new Click();
             $click->clickee = $id;
 
 
-            $click->clicker = Auth::user()->getProfileID();
+            $click->clicker = $user->getFacebookID();
 
             if (!isset($click->clicker)) {
                 // Session expired or something twonky going on, login again
@@ -45,6 +46,7 @@ class ApplicationController extends BaseController {
             }
             try {
                 $click->save();
+                $user->profile->updateClickCount();
             } catch (Exception $e) {
                 Redirect::to(URL::action("ApplicationController@getMatch"))->with("clicked", "Je hebt deze gebruiker al een keer aangeklikt");
             }
@@ -53,11 +55,13 @@ class ApplicationController extends BaseController {
         }
     }
 
+
+
     /**
-     * @return a view which displays the clicks by the user.
+     * @return mixed a view which displays the clicks by the user.
      */
     public function getClickedFriends() {
-        $clicks = Click::where('clicker', '=', Auth::user()->getProfileID())->get()->toArray();
+        $clicks = Click::where('clicker', '=', Auth::user()->profile->uid)->get()->toArray();
         if (Auth::check()) {
             return View::make('matches', array('clicks' => $clicks));
         } else {
@@ -70,7 +74,7 @@ class ApplicationController extends BaseController {
      * @return to the matches page if user logged in. Else to homepage
      */
     public function getMatch() {
-        $clicks = Click::where('clickee', '=', Auth::user()->getProfileID())->get()->toArray();
+        $clicks = Click::where('clickee', '=', Auth::user()->profile->uid)->get()->toArray();
         if (Auth::check()) {
             return View::make('matches', array('clicks' => $clicks));
         } else {
