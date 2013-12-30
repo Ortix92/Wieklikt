@@ -33,6 +33,7 @@
                     title="name"  
                     alt="name"
                     width="200px" />
+            <p class="text-center">matchname</p>
         </a> 
     </div>          
   <?php endforeach; ?>
