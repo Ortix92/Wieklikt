@@ -1,8 +1,11 @@
 /* Sticky footer */
-html, body {
+
+html,
+body {
     height: 100%;
 }
 /* Wrapper for page content to push down footer */
+
 #wrap {
     min-height: 100%;
     height: auto;
@@ -11,20 +14,31 @@ html, body {
     /* Pad bottom by footer height */
     padding: 0 0 150px;
 }
-
 /* Set the fixed height of the footer here */
+
 footer {
     height: 150px;
     background: rgb(218, 223, 228);
     border-top: 4px solid rgb(172, 178, 184);
 }
-
 /* Long names no longer breaks the layout, they're just hidden :D */
+
 .fb-friend a p {
     height: 20px;
     overflow: hidden;
 }
-
 .profileImage img:hover {
-                cursor: pointer;
+    cursor: pointer;
+}
+
+#wrap > .container {
+  padding: 60px 15px 0;
+}
+.container .text-muted {
+  margin: 20px 0;
+}
+
+#footer > .container {
+  padding-left: 15px;
+  padding-right: 15px;
 }

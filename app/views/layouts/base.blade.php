@@ -21,14 +21,13 @@
         {{-- End head --}}
         @show
     </head>
-    <body style="margin-top: 50px;">
+    <body>
         @section('body')
         <?php if (Session::has('message')): ?>
             <p class="text-danger"><?php echo Session::get('message'); ?></p>
         <?php endif; ?>
 
         <div id="wrap">      
-            <!-- Begin navigation for logged-in user -->
             <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="container">
@@ -49,18 +48,15 @@
                         </ul>
                         <div class="nav navbar-right">
                             @section('navigation-right')
-                            <a href="logout" class="btn btn-default navbar-btn" role="button">Logout</a>
+                            <a href="{{URL::route('logout')}}" class="btn btn-default navbar-btn" role="button">Logout</a>
                             @show
                         </div>
                     </div><!-- /.navbar-collapse -->    
                 </div>
             </nav>
-            <!-- End navigation for logged-in user --> 
 
             <div class="container">
-                <div class="wrap">
-                    @yield('main-body')
-                </div>
+                @yield('main-body')
             </div>
         </div>
 
@@ -68,7 +64,7 @@
         <footer>
             <div class="container">
                 <p class="pull-right"><a href="#">Back to top</a></p>
-                <p>&copy; 2013 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+                <p>&copy; 2013 Wieklikt. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
             </div>
         </footer>
         {{-- End Footer--}}
