@@ -28,7 +28,6 @@
         <?php endif; ?>
 
         <div id="wrap">      
-            <!-- Begin navigation for logged-in user -->
             <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="container">
@@ -55,12 +54,9 @@
                     </div><!-- /.navbar-collapse -->    
                 </div>
             </nav>
-            <!-- End navigation for logged-in user --> 
 
             <div class="container">
-                <div class="wrap">
-                    @yield('main-body')
-                </div>
+                @yield('main-body')
             </div>
         </div>
 
