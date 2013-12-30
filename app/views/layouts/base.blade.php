@@ -21,7 +21,7 @@
         {{-- End head --}}
         @show
     </head>
-    <body style="margin-top: 50px;">
+    <body>
         @section('body')
         <?php if (Session::has('message')): ?>
             <p class="text-danger"><?php echo Session::get('message'); ?></p>
@@ -49,7 +49,7 @@
                         </ul>
                         <div class="nav navbar-right">
                             @section('navigation-right')
-                            <a href="logout" class="btn btn-default navbar-btn" role="button">Logout</a>
+                            <a href="{{URL::route('logout')}}" class="btn btn-default navbar-btn" role="button">Logout</a>
                             @show
                         </div>
                     </div><!-- /.navbar-collapse -->    
