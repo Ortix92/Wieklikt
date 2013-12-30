@@ -4,16 +4,21 @@ Dingen
 
 ## TODO
 
-* Na inloggen naar de user pagina ipv naar de klikpagina
+Voor de beta
+----------------------------
 
-* Design moet gemaakt worden
+- [ ] Na inloggen naar de user pagina ipv naar de klikpagina
 
-* Als er gezocht wordt naar vrienden, en vervolgens maak je de searchbar leeg dan moeten alle vrienden weer verschijnen.
+- [ ] Als er gezocht wordt naar vrienden, en vervolgens maak je de searchbar leeg dan moeten alle vrienden weer verschijnen.
 
-* User pagina moet functioneel worden, met een overzicht van je kliks etc.
+- [ ] User pagina moet functioneel worden, met een overzicht van je kliks etc.
 
-* Tutorial moet ingebouwd worden
+- [ ] Tutorial moet ingebouwd worden
 
-* Android & Ios apps moeten onderzocht worden (alpha / beta versies  als webview in een app package,  echte release via de stores moet wel native)
 
-* 
+Voor de release
+---------------------------------
+
+- [ ] Design moet gemaakt worden
+
+- [ ] Android & Ios apps moeten onderzocht worden (alpha / beta versies  als webview in een app package,  echte release via de stores moet wel native)
