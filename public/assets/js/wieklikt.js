@@ -1,8 +1,8 @@
 $(document).ready(function() {
 
     function display(friends) {
-        $(".row").empty();
-        $(".row").append(friends);
+        $("#friendList").empty();
+        $("#friendList").append(friends);
     }
     
     
