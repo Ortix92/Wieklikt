@@ -3,11 +3,11 @@
 class Profile extends Eloquent {
 
     public function user() {
-        return $this->belongsTo('User');
+        return $this->belongsTo('User','user_id');
     }
 
-    public function clicks() {
-        return $this->hasMany('Click');
+    public function click() {
+        return $this->hasMany('Click','clickee', 'uid');
     }
 
     /**
