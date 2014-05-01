@@ -37,10 +37,10 @@ Route::get('/', function() {
     }
 });
 
-Route::get('logout', function() {
-            Auth::logout();
-            return Redirect::to('/');
-        });
+Route::get('logout', array('as' => 'logout', function() {
+    Auth::logout();
+    return Redirect::to('/');
+}));
 
 // Entry point for authentication      
 Route::controller('login', 'FacebookController');

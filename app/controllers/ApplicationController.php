@@ -55,8 +55,6 @@ class ApplicationController extends BaseController {
         }
     }
 
-
-
     /**
      * @return mixed a view which displays the clicks by the user.
      */
@@ -70,13 +68,38 @@ class ApplicationController extends BaseController {
     }
 
     /**
+     * Extracts all the clicker ID's and puts it in an array
+     * @param object $clicks a Click object
+     * @return array contains all the clicker id's
+     */
+    public function clickersToIdArray($clicks) {
+        foreach ($clicks as $click) {
+            $array[] = $click->clicker;
+        }
+        return $array;
+    }
+
+    /**
+     * Gets the profile corresponding to the clicker id
+     * @param object $clicks a Click object
+     * @return mixed an array of all the profile objects
+     */
+    public function getMatchProfile($clicks) {
+        $clickIds = $this->clickersToIdArray($clicks);
+        $profiles = Profile::whereIn('uid', $clickIds)->get();
+        return $profiles;
+    }
+
+    /**
      * Gets the matches
      * @return to the matches page if user logged in. Else to homepage
      */
     public function getMatch() {
-        $clicks = Click::where('clickee', '=', Auth::user()->profile->uid)->get()->toArray();
+        $clicks = Click::where('clickee', '=', Auth::user()->profile->uid)->get();
+        $profiles = $this->getMatchProfile($clicks);
+
         if (Auth::check()) {
-            return View::make('matches', array('clicks' => $clicks));
+            return View::make('matches', array('profiles' => $profiles));
         } else {
             return Redirect::to("/");
         }

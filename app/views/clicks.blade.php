@@ -3,7 +3,7 @@
 @section('navigation-main')
     <li><a href="/">Home</a></li>
     <li><a href="/app">Terug naar de app</a></li>
-    <li><a href="match">Matches</a></li>
+    <li><a href="/match">Matches</a></li>
     <li class="active"><a href="match">clicks</a></li>
 @stop
 
