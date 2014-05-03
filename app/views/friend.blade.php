@@ -1,6 +1,10 @@
 <?php $id = $friend["id"] ?>
 <?php $name = $friend["name"] ?>
-<?php $gender = $friend["gender"] ?>
+<?php
+if (isset($friend["gender"])) {
+    $gender = $friend["gender"];
+}
+?>
 <div class="col-xs-6 col-sm-4 col-md-2 fb-friend">
     <a href="/app/click/{{$id}}">
         <img    class="img-circle img-responsive" 
