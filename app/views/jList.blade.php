@@ -23,9 +23,14 @@
 </div>
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <p>
-            <input id="search" type="text" class="form-control input-lg" placeholder="Search friends..." /> 
-        </p>
+        <div id="search-wrapper" class="form-inline">
+            <div class="form-group">
+                <input id="search" type="text" class="form-control input-lg" placeholder="Search friends..." />
+            </div>
+            <button id="gender-male" type="button" class="btn btn-lg btn-primary">Male</button>
+            <button id="gender-female"type="button" class="btn btn-lg btn-primary">Female</button>
+        </div>
+
     </div>   
 </div>    
 <div class="row">

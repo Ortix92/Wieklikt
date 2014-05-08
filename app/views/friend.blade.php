@@ -13,5 +13,6 @@ if (isset($friend["gender"])) {
                 alt="{{$name}}" 
                 width="200px" />
         <p class="text-center">{{$name}}</p>
+        <p class="text-center">{{$gender}}</p>
     </a>
 </div>

@@ -5,6 +5,38 @@ $(document).ready(function() {
         $("#friendList").append(friends);
     }
     
+    /*************************************
+     * Load only males
+     *************************************/
+    $("#gender-male").click(function() {
+        $.ajax({
+            url: "app/friends",
+            data: {
+                term: "gender.male"
+            },
+            success: function(data) {
+                display(data);
+            //console.log(response);
+            }
+        });
+    })
+    
+    /*************************************
+     * Load only females
+     *************************************/
+    
+    $("#gender-female").click(function() {
+        $.ajax({
+            url: "app/friends",
+            data: {
+                term: "gender.female"
+            },
+            success: function(data) {
+                display(data);
+            //console.log(response);
+            }
+        });
+    })
     
     // Reload random friends on empty search field
     $("#search").on('input', function() {

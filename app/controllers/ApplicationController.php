@@ -108,7 +108,7 @@ class ApplicationController extends BaseController {
     /**
      * Load friends inside a json encode object for displaying on the main page
      * Returns 42 random friends when $_GET == "load.random"
-     * @return json a json encoded page containing all friends from the needle in $_GET
+     * @return View returns a View object
      */
     public function getFriends() {
         $friends = Session::get("friends");
@@ -118,6 +118,13 @@ class ApplicationController extends BaseController {
             shuffle($friends);
             $friends = array_slice($friends, 0, 42);
             $sortedFriends = $friends;
+        } elseif (stristr($needle, 'gender.')) {
+            foreach ($friends as $key => $friend) {
+                $genderArr = (explode(".", $needle));
+                if (isset($friend["gender"]) && $friend["gender"] == end($genderArr)) {
+                    $sortedFriends[] = $friend;
+                }
+            }
         } else {
             foreach ($friends as $key => $friend) {
                 if (stristr($friend["name"], $needle)) {
