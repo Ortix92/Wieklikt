@@ -22,6 +22,8 @@
             <li>You have # matches.</li>
             <li>You have used # of your 3 clicks this week.</li>
         </ul>
+        <a href="app"><button type="button" class="btn btn-primary btn-lg">Begin met Klikken!</button></a>
+
     </div>
     <div class="col-md-4">
         <img src="<?php echo $data['photo']; ?>" class="img-responsive img-rounded" alt="userphoto" />
@@ -30,11 +32,10 @@
 <div class="row">
     <div class="col-md-12">
         <p>
-            <div class="progress progress-striped active">
-                <div class="progress-bar"  role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" style="width: 33%">
-                    <span class="sr-only">33% Complete</span>
-                </div>
+        <div class="progress progress-striped active">
+            <div class="progress-bar"  role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
             </div>
+        </div>
         </p>
     </div>
 </div>
