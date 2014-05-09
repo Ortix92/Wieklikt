@@ -1,76 +1,120 @@
 $(document).ready(function() {
-
-    function display(friends) {
-        $("#friendList").empty();
-        $("#friendList").append(friends);
+    
+    function bubbleUp(speed) {
+        var speedVar = 250;
+        switch(speed) {
+            case "fast":
+                speedVar = 150;
+                break;
+            case "normal":
+                speedVar = 250;
+                break;
+            case "slow":
+                speedVar = 400;
+                break;
+            case undefined:
+                speedVar = 250;
+                break;
+        }
+        $.each($('.bubble'), function(i, el){
+            
+            // Store current width
+            $(el).data('width', $(el).css('width'));
+            
+            // Set width to 0 so we can resize it later to stored width
+            $(el).css('width',0);
+            $(el).removeClass('bubble');
+            
+            console.log($(el));
+            console.log($(el).data('width'));
+            setTimeout(function(){
+                $(el).animate({
+                    'width':$(el).data('width')
+                }, speedVar);
+            },speedVar/2 + ( i * speedVar/2 ));
+        
+        });
+    }
+    function displayFriends(friends) {
+        $("#friendList").empty().hide();
+        $("#friendList").append(friends).waitForImages(function() {
+            bubbleUp();
+            $(this).fadeIn("slow");
+        });
     }
     
-    /*************************************
-     * Load only males
-     *************************************/
-    $("#gender-male").click(function() {
-        $("#gender-alert").slideDown().delay(4000).slideUp();
+    function getFriends(type) {
         $.ajax({
             url: "app/friends",
             data: {
-                term: "gender.male"
+                term: type
             },
             success: function(data) {
-                display(data);
+                displayFriends(data);
             //console.log(response);
             }
         });
+    }
+    
+    function getNotification(notification) {
+        $.ajax({
+            url: "util/notification/"+notification,
+            success: function(data) {
+                if(!$("#"+notification).length) {
+                    $(data).appendTo($("#notification-wrapper")).slideDown();
+                }
+            }
+        });
+    }
+    
+    /***************************************************************************/
+    /***************************************************************************/
+    /***************************************************************************/
+    
+    /***************************************************************************/
+    /*
+    /* Household shit to do right after the page is first loaded
+    /* 
+    /***************************************************************************/
+    
+    bubbleUp();
+    
+    $("#friendList").waitForImages(function() {
+        $(this).fadeIn("fast");
     })
     
-    /*************************************
-     * Load only females
-     *************************************/
+    /***************************************************************************/
+    /*
+    /* All the other event crap
+    /* 
+    /***************************************************************************/
+    
+    
+    $("#gender-male").click(function() {
+        getFriends("gender.male");
+        setTimeout(function() {
+            getNotification("gender-privacy")
+        }, 250);
+    })
     
     $("#gender-female").click(function() {
-        $.ajax({
-            url: "app/friends",
-            data: {
-                term: "gender.female"
-            },
-            success: function(data) {
-                display(data);
-            //console.log(response);
-            }
-        });
+        getFriends("gender.female");
+        setTimeout(function() {
+            getNotification("gender-privacy")
+        }, 250);
     })
     
     // Reload random friends on empty search field
     $("#search").on('input', function() {
         if($(this).val() == "") {
-            $.ajax({
-                url: "app/friends",
-                data: {
-                    term: "load.random"
-                },
-                success: function(data) {
-                    display(data);
-                //console.log(response);
-                }
-            });
+            getFriends("load.random");
         }
     })
     
-
-    /**
-    * Use autocomplete lib to load friend list 
-    */
+    //Use autocomplete lib to load friend list 
     $("#search").autocomplete({
         source: function(request, response) {
-            $.ajax({
-                url: "app/friends",
-                data: {
-                    term: request.term
-                },
-                success: function(data) {
-                    display(data);
-                //console.log(response);
-                }
-            });
+            getFriends(request.term);
         },
         minLength: 2,
         open: function(event, ui) {

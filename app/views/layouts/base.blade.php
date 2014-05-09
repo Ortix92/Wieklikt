@@ -11,13 +11,8 @@
         <link rel="stylesheet" href="{{ URL::asset('assets/css/bootstrap.css') }}">
         <link rel="stylesheet" href="{{ URL::asset('assets/css/bootstrap-theme.css')}}">
         <link rel="stylesheet" href="{{ URL::asset('assets/css/wieklikt.css')}}">
-        <script src="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css')}}"></script>
+        <!--<script src="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"></script>-->
 
-        <style>
-            .profileImage img:hover {
-                cursor: pointer;
-            }
-        </style>
         {{-- End head --}}
         @show
     </head>
@@ -56,6 +51,8 @@
             </nav>
 
             <div class="container">
+                <div id="notification-wrapper">
+                </div>
                 @yield('main-body')
             </div>
         </div>
@@ -72,14 +69,15 @@
 
         <!-- Javascript -->
         @section('scripts')
-        <script src="//code.jquery.com/jquery-1.9.1.js"></script>
-        <script src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+        <script type="text/javascript" src="//code.jquery.com/jquery-1.9.1.js"></script>
+        <script type="text/javascript" src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
         <script type="text/javascript">
             //            $(".profileImage").click(function() {
             //                $(this).animate({opacity: "0.0"}).animate({width: 0}).hide(0);
             //            })
         </script>
-        <script src="{{ URL::asset('assets/js/bootstrap.js')}}"></script>
+        <script type="text/javascript" src="{{ URL::asset('assets/js/bootstrap.js')}}"></script>
         <script type="text/javascript" src="{{ URL::asset('assets/js/wieklikt.js')}}"></script>
         {{-- End scripts--}}    
         @show

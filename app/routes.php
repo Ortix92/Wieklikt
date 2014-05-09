@@ -5,27 +5,9 @@
   | Application Routes
   |--------------------------------------------------------------------------
   |
-  | Here is where you can register all of the routes for an application.
-  | It's a breeze. Simply tell Laravel the URIs it should respond to
-  | and give it the Closure to execute when that URI is requested.
+  | Here are all the application routes located
   |
  */
-
-// Route::get('/', function()
-// {
-// 	return View::make('home');
-// });
-//Route::get('/', 'HomeController@showIndex');
-
-/*
-  |--------------------------------------------------------------------------
-  | Facebook Login Route
-  |--------------------------------------------------------------------------
-  |
-  | Here we route the facebook login call to the API
-  |
- */
-
 Route::get('/', function() {
     $data = array();
 
@@ -47,3 +29,6 @@ Route::controller('login', 'FacebookController');
 
 // Entry point for application logic
 Route::controller('app', 'ApplicationController');
+
+// Entry point for notifications
+Route::controller('util', 'UtilitiesController');

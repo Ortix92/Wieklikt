@@ -8,9 +8,6 @@
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div class="page-header">
-            <p id="gender-alert" class="bg-danger hidden">
-                Vanwege privacy instellingen is het niet mogelijk om het geslacht van iedereen uit te lezen
-            </p>
             <h1>Lets click!</h1>
         </div>
     </div>   
@@ -37,9 +34,14 @@
     </div>   
 </div>    
 <div class="row">
-    <div id="friendList">
+    <div id="friendList" style="display:none">
         @each('friend',$friends,'friend')
     </div>
 </div>
 
+@stop
+
+@section('scripts')
+@parent
+<script type="text/javascript" src="{{ URL::asset('assets/js/jquery.waitforimages.js')}}"></script>
 @stop
