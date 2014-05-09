@@ -9,6 +9,7 @@ $(document).ready(function() {
      * Load only males
      *************************************/
     $("#gender-male").click(function() {
+        $("#gender-alert").slideDown().delay(4000).slideUp();
         $.ajax({
             url: "app/friends",
             data: {

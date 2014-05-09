@@ -8,6 +8,9 @@
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div class="page-header">
+            <p id="gender-alert" class="bg-danger hidden">
+                Vanwege privacy instellingen is het niet mogelijk om het geslacht van iedereen uit te lezen
+            </p>
             <h1>Lets click!</h1>
         </div>
     </div>   

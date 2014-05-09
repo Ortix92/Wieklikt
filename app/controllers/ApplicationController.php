@@ -124,6 +124,8 @@ class ApplicationController extends BaseController {
                 if (isset($friend["gender"]) && $friend["gender"] == end($genderArr)) {
                     $sortedFriends[] = $friend;
                 }
+                shuffle($sortedFriends);
+                $sortedFriends = array_slice($sortedFriends, 0, 42);
             }
         } else {
             foreach ($friends as $key => $friend) {
