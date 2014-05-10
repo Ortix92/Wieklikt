@@ -12,8 +12,7 @@ Route::get('/', function() {
             $data = array();
 
             if (Auth::check()) {
-                $data = Auth::user();
-                return View::make('user', array('data' => $data));
+                return Redirect::to('user');
             } else {
                 return View::make('home');
             }
@@ -29,6 +28,7 @@ Route::controller('login', 'FacebookController');
 
 // Entry point for application logic
 Route::controller('app', 'ApplicationController');
+Route::controller('user', 'UserController');
 
 // Entry point for notifications
 Route::controller('util', 'UtilitiesController');

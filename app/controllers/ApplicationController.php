@@ -3,27 +3,32 @@
 class ApplicationController extends BaseController {
 
     var $facebook;
+    var $me;
+    var $friends;
 
     public function __construct() {
         $this->facebook = new Facebook(Config::get('facebook'));
+        $friendsList = $this->facebook->api('/me/friends?fields=id,name,gender');
+        $this->friends = $friendsList['data'];
+
+        $this->me = Auth::user();
+        $this->me->clickedFriends = $this->getClickedFriends();
+
+        // Cache data for views
+        View::share("matches", $this->getMatch(false));
+        View::share("friends", $this->friends);
+        View::share("me", $this->me);
     }
 
     public function getIndex() {
-
-        /**
-         * @todo It is necessary to test if it's faster to pass the friends array
-         * to this method, or to get it here.
-         */
-        $friendsList = $this->facebook->api('/me/friends?fields=id,name,gender');
-        Session::put("friends", $friendsList['data']);
-        $me = Auth::user();
-
+        // Request friend list from Facebook
         // We truncate the friendlist for initial viewing
-        $friends = $friendsList["data"];
+        Session::put("friends", $this->friends);
+        $friends = $this->friends;
         shuffle($friends);
-        $friends = array_slice($friends, 0, 42);
+        $smallFriends = array_slice($this->friends, 0, 42);
         if (Auth::check()) {
-            return View::make('jList', array('friends' => $friends, 'me' => $me));
+            return View::make('jList', array('friends' => $smallFriends, 'me' => $this->me));
         } else {
             return Redirect::to('/');
         }
@@ -65,11 +70,7 @@ class ApplicationController extends BaseController {
      */
     public function getClickedFriends() {
         $clicks = Click::where('clicker', '=', Auth::user()->profile->uid)->get()->toArray();
-        if (Auth::check()) {
-            return View::make('matches', array('clicks' => $clicks));
-        } else {
-            return Redirect::to("/");
-        }
+        return $clicks;
     }
 
     /**
@@ -97,16 +98,19 @@ class ApplicationController extends BaseController {
 
     /**
      * Gets the matches
+     * @param boolean $view if set to true, method returns a view otherwise it returns the matches
      * @return to the matches page if user logged in. Else to homepage
      */
-    public function getMatch() {
+    public function getMatch($view = true) {
         $clicks = Click::where('clickee', '=', Auth::user()->profile->uid)->get();
         $profiles = $this->getMatchProfile($clicks);
 
-        if (Auth::check()) {
+        if (Auth::check() && $view) {
             return View::make('matches', array('profiles' => $profiles));
-        } else {
+        } elseif ($view) {
             return Redirect::to("/");
+        } else {
+            return $profiles;
         }
     }
 

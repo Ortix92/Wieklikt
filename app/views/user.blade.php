@@ -18,9 +18,9 @@
     <div class="col-md-8">
         <ul>
             <li>Your email is <a href="mailto:<?php echo $data['email']; ?>"><?php echo $data['email']; ?></a>.</li>
-            <li>Your facebook-id is: .</li>
-            <li>You have # matches.</li>
-            <li>You have used # of your 3 clicks this week.</li>
+            <li>Your facebook-id is: {{($me->profile->uid)}} .</li>
+            <li>You have {{count($matches)}} matches.</li>
+            <li>You have used {{count($me->clickedFriends)}} of your 3 clicks this week.</li>
         </ul>
         <a href="app"><button type="button" class="btn btn-primary btn-lg">Begin met Klikken!</button></a>
 
