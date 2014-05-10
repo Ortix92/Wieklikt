@@ -16,24 +16,34 @@ $(document).ready(function() {
                 speedVar = 250;
                 break;
         }
-        $.each($('.bubble'), function(i, el){
-            
+         
+        $('.bubble').each(function(i, el) {
             // Store current width
             $(el).data('width', $(el).css('width'));
-            
+                
             // Set width to 0 so we can resize it later to stored width
             $(el).css('width',0);
+            $("p",el).css('display','none');
+            $("img",el).css('width',0);
             $(el).removeClass('bubble');
-            
-            console.log($(el));
-            console.log($(el).data('width'));
+                
+            // First animate the container, then the image, then the name 
+            // all of these events are nested in their parent's callback
             setTimeout(function(){
                 $(el).animate({
                     'width':$(el).data('width')
-                }, speedVar);
+                }, speedVar,"linear",function() {
+                    $(el).removeAttr("style")
+                    $("img",el).animate({
+                        'width':"100%"
+                    }, speedVar,"linear",function() {
+                        $("img",el).removeAttr("style")
+                        $("p",el).fadeIn();
+                    });
+                });
             },speedVar/2 + ( i * speedVar/2 ));
-        
         });
+        
     }
     function displayFriends(friends) {
         $("#friendList").empty().hide();
