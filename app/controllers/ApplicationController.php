@@ -2,14 +2,19 @@
 
 class ApplicationController extends BaseController {
 
+    var $facebook;
+
+    public function __construct() {
+        $this->facebook = new Facebook(Config::get('facebook'));
+    }
+
     public function getIndex() {
 
         /**
          * @todo It is necessary to test if it's faster to pass the friends array
          * to this method, or to get it here.
          */
-        $facebook = new Facebook(Config::get('facebook'));
-        $friendsList = $facebook->api('/me/friends?fields=id,name,gender');
+        $friendsList = $this->facebook->api('/me/friends?fields=id,name,gender');
         Session::put("friends", $friendsList['data']);
         $me = Auth::user();
 

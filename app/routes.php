@@ -9,20 +9,20 @@
   |
  */
 Route::get('/', function() {
-    $data = array();
+            $data = array();
 
-    if (Auth::check()) {
-        $data = Auth::user();
-        return View::make('user', array('data' => $data));
-    } else {
-        return View::make('home');
-    }
-});
+            if (Auth::check()) {
+                $data = Auth::user();
+                return View::make('user', array('data' => $data));
+            } else {
+                return View::make('home');
+            }
+        });
 
 Route::get('logout', array('as' => 'logout', function() {
-    Auth::logout();
-    return Redirect::to('/');
-}));
+        Auth::logout();
+        return Redirect::to('/');
+    }));
 
 // Entry point for authentication      
 Route::controller('login', 'FacebookController');
@@ -32,3 +32,7 @@ Route::controller('app', 'ApplicationController');
 
 // Entry point for notifications
 Route::controller('util', 'UtilitiesController');
+
+App::missing(function($exception) {
+            return Response::view('errors.404', array(), 404);
+        });
