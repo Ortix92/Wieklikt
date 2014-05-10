@@ -79,6 +79,7 @@ class ApplicationController extends BaseController {
      * @return array contains all the clicker id's
      */
     public function clickersToIdArray($clicks) {
+        $array = array();
         foreach ($clicks as $click) {
             $array[] = $click->clicker;
         }

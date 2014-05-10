@@ -50,7 +50,7 @@
                         if (count($me->clickedFriends) == 0) {
                             echo 'Matches';
                         }
-                        elseif (count($me->clickedFriends) == 1) {
+                        elseif (count($me->clickedFriends) == '1') {
                             echo 'Match!';
                         } 
                         else {
