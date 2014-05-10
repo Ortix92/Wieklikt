@@ -16,10 +16,16 @@
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div id="search-wrapper" class="form-inline">
             <div class="form-group">
-                <input id="search" type="text" class="form-control input-lg" placeholder="Search friends..." />
+                <input id="search" type="text" class="form-control input" placeholder="Search friends..." />
             </div>
-            <button id="gender-male" type="button" class="btn btn-lg btn-primary">Male</button>
-            <button id="gender-female"type="button" class="btn btn-lg btn-primary">Female</button>
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Filter <span class="caret"></span></button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a id="gender-male">Male only</a></li>
+                    <li><a id="gender-female">Female only</a></li>
+                    <li><a href="/app">Both</a></li>
+                </ul>
+            </div>
         </div>
     </div>   
 </div>    

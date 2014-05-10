@@ -10,7 +10,7 @@
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div class="page-header">
-            <h1><small>Hello</small> <?php echo e($data['name']); ?></h1>
+            <h1>Your profile</h1>
         </div>
     </div>   
 </div>
@@ -37,17 +37,27 @@
                 <div class="col-xs-12 col-sm-4 emphasis">
                     <h2><strong> {{count($friends)}} </strong></h2>
                     <p><small>Friends</small></p>
-                    <button href="app" class="btn btn-success btn-block"><span class="fa fa-users"></span> Get clicking! </button>
+                    <a href="app" class="btn btn-success btn-block"><span class="fa fa-users"></span> Get clicking! </a>
                 </div>
                 <div class="col-xs-12 col-sm-4 emphasis">
                     <h2><strong> {{count($me->clickedFriends)}} of 3 </strong></h2>
-                    <p><small>Clicked</small></p>
-                    <button href="clicks" class="btn btn-info btn-block"><span class="fa fa-heart"></span> Clicks </button>
+                    <p><small>Clicks used</small></p>
+                    <a href="clicks" class="btn btn-info btn-block"><span class="fa fa-heart"></span> Clicks </a>
                 </div>
                 <div class="col-xs-12 col-sm-4 emphasis">
                     <h2><strong> {{count($matches)}} </strong></h2>
-                    <p><small>Matches</small></p>
-                    <button href="matches" class="btn btn-primary btn-block"><span class="fa fa-link"></span> Matches </button>
+                    <p><small><?php 
+                        if (count($me->clickedFriends) == 0) {
+                            echo 'Matches';
+                        }
+                        elseif (count($me->clickedFriends) == 1) {
+                            echo 'Match!';
+                        } 
+                        else {
+                            echo 'Matches!';
+                        }?>
+                        </small></p>
+                    <a href="{{action('ApplicationController@getMatch');}}" class="btn btn-primary btn-block"><span class="fa fa-link"></span> Matches </a>
                 </div>
             </div>
          </div>                 
