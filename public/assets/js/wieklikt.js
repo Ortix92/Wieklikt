@@ -114,6 +114,10 @@ $(document).ready(function() {
         }, 250);
     })
     
+    $("#gender-both").click(function() {
+        getFriends("load.random");
+    })
+    
     // Reload random friends on empty search field
     $("#search").on('input', function() {
         if($(this).val() == "") {
