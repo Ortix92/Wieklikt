@@ -7,23 +7,14 @@
 @stop
 
 @section('main-body')
-<?php if (!empty($profiles)): ?>
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="page-header">
-                <h1>Woehoehoe</h1>
+                <h1>Matches</h1>
             </div>
         </div>   
     </div>
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <div class="progress progress-striped active">
-                <div class="progress-bar"  role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
-                    <span class="sr-only">100% Complete</span>
-                </div>
-            </div>
-        </div>   
-    </div>
+<?php if (!empty($profiles)): ?><!-- Matches -->
     <div class="row"> 
         <?php foreach ($profiles as $profile): ?>
 
@@ -39,29 +30,11 @@
             </div>          
         <?php endforeach; ?>
     </div>
-<?php else: ?><!-- Geen matches -->
+<?php else: ?><!-- No Matches -->
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="page-header">
-                <h1>Jammer joh!</h1>
-            </div>
-        </div>   
-    </div>
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <div class="page-header">
-                <div class="progress progress-striped active">
-                    <div class="progress-bar"  role="progressbar" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100" style="width: 66%">
-                        <span class="sr-only">66% Complete</span>
-                    </div>
-                </div>
-            </div>
-        </div>   
-    </div>
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <div class="page-header">
-                <p>je hebt nog geen matches</p>
+                <p>Unfortunately you don't have any matches yet, keep clicking!</p>
             </div>
         </div>   
     </div>
