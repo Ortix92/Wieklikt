@@ -23,7 +23,7 @@
                 <ul class="dropdown-menu" role="menu">
                     <li><a id="gender-male">Male only</a></li>
                     <li><a id="gender-female">Female only</a></li>
-                    <li><a href="/app">Both</a></li>
+                    <li><a id="gender-both">Both</a></li>
                 </ul>
             </div>
         </div>
