@@ -12,7 +12,7 @@ class ApplicationController extends BaseController {
         $this->friends = $friendsList['data'];
 
         $this->me = Auth::user();
-        $this->me->clickedFriends = $this->getClickedFriends();
+        $this->me->clicks = $this->getClicks();
 
         // Cache data for views
         View::share("matches", $this->getMatch(false));
@@ -66,14 +66,6 @@ class ApplicationController extends BaseController {
     }
 
     /**
-     * @return mixed a view which displays the clicks by the user.
-     */
-    public function getClickedFriends() {
-        $clicks = Click::where('clicker', '=', Auth::user()->profile->uid)->get()->toArray();
-        return $clicks;
-    }
-
-    /**
      * Extracts all the clicker ID's and puts it in an array
      * @param object $clicks a Click object
      * @return array contains all the clicker id's
@@ -114,7 +106,20 @@ class ApplicationController extends BaseController {
             return $profiles;
         }
     }
-
+    /**
+    * YOLO let's try this
+    * @return to the clicks page if user logged in. Else to homepage
+    */
+    public function getClicks($view = true) {
+        $clicks = Click::where('clicker', '=', Auth::user()->profile->uid)->get()->toArray();
+        if (Auth::check() && $view) {
+            return View::make('clicks', array('clicks' => $clicks));
+        } elseif ($view) {
+            return Redirect::to("/");
+        } else {
+            return $clicks;
+        }
+    }
     /**
      * Load friends inside a json encode object for displaying on the main page
      * Returns 42 random friends when $_GET == "load.random"

@@ -9,10 +9,10 @@
 
 @section('main-body')
     <h1>Clicks</h1>
-    <?php if (!empty($clicks)): ?>
+    <?php if (!empty($clicks)): ?><!-- wel clicks -->
     <p>Your clicks:</p>
     <?php foreach ($clicks as $click): ?>
-    <a href="http://facebook.com/<?php echo $click["clicker"]; ?>"><img class="img-circle" id="<?php echo $click["clicker"]; ?>" src="https://graph.facebook.com/<?php echo $click["clicker"]; ?>/picture?width=200&height=200 " /></a>           
+    <a href="http://facebook.com/<?php echo $click["clickee"]; ?>"><img class="img-circle" id="<?php echo $click["clickee"]; ?>" src="https://graph.facebook.com/<?php echo $click["clickee"]; ?>/picture?width=200&height=200 " /></a>           
     <?php endforeach; ?>
     <?php else: ?><!-- Geen clicks -->
     <p>You haven't clicked anyone yet! This means you still have 3 clicks remaining!</p>
