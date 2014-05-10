@@ -14,18 +14,43 @@
         </div>
     </div>   
 </div>
+
 <div class="row">
-    <div class="col-md-8">
-        <ul>
-            <li>Your email is <a href="mailto:<?php echo $data['email']; ?>"><?php echo $data['email']; ?></a>.</li>
-            <li>Your facebook-id is: .</li>
-            <li>You have # matches.</li>
-            <li>You have used # of your 3 clicks this week.</li>
-        </ul>
-        <a href="app"><button type="button" class="btn btn-primary btn-lg">Start Clicking!</button></a>
-    </div>
-    <div class="col-md-4">
-        <img src="<?php echo $data['photo']; ?>" class="img-responsive img-rounded" alt="userphoto" />
+    <div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
+         <div class="well profile">
+            <div class="col-sm-12">
+                <div class="col-xs-12 col-sm-8">
+                    <h2><?php echo e($data['name']); ?></h2>
+                    <p><strong>Email:</strong> <a href="mailto:<?php echo $data['email']; ?>"><?php echo $data['email']; ?></a></p>
+                    <p><strong>Facebook ID: </strong> ###########</p>
+                </div>             
+                <div class="col-xs-12 col-sm-4 text-center">
+                    <figure>
+                        <img src="<?php echo $data['photo']; ?>" alt="" class="img-circle img-responsive">
+                        <figcaption class="ratings">
+                            <p>Handsome!</p>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>            
+            <div class="col-xs-12 divider text-center">
+                <div class="col-xs-12 col-sm-4 emphasis">
+                    <h2><strong> # </strong></h2>                    
+                    <p><small>Friends</small></p>
+                    <button href="app" class="btn btn-success btn-block"><span class="fa fa-users"></span> Get clicking! </button>
+                </div>
+                <div class="col-xs-12 col-sm-4 emphasis">
+                    <h2><strong> # of 3 </strong></h2>                    
+                    <p><small>Clicked</small></p>
+                    <button href="clicks" class="btn btn-info btn-block"><span class="fa fa-heart"></span> Clicks </button>
+                </div>
+                <div class="col-xs-12 col-sm-4 emphasis">
+                    <h2><strong> # </strong></h2>                    
+                    <p><small>Matches</small></p>
+                    <button href="matches" class="btn btn-primary btn-block"><span class="fa fa-link"></span> Matches </button>
+                </div>
+            </div>
+         </div>                 
     </div>
 </div>
 @stop

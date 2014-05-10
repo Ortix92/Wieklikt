@@ -8,8 +8,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- Stylesheets -->
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"> <!-- Bootstrap CSS CDN -->
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css"> <!-- Bootstrap theme CSS CDN -->
+        <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"> Bootstrap CSS CDN -->
+        <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css"> Bootstrap theme CSS CDN -->
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/cyborg/bootstrap.min.css"> <!-- Bootstrap CSS CDN with Cyborgh theme -->
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- Font awesome icons CSS CDN -->
         <link rel="stylesheet" href="{{ URL::asset('assets/css/wieklikt.css')}}"> <!-- Our custom Wieklikt CSS -->
         <!--<script src="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"></script>-->
 
@@ -59,10 +61,6 @@
 
         @section('footer')
         <footer>
-            <div class="container">
-                <p class="pull-right"><a href="#">Back to top</a></p>
-                <p>&copy; 2014 Wieklikt.</p>
-            </div>
         </footer>
         {{-- End Footer--}}
         @show
