@@ -55,3 +55,7 @@ span.tags
     font-weight: bold;
     padding: 2px 4px;
     }
+
+#friendList img.img-responsive {
+    width: 100%;
+}
