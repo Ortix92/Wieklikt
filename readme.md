@@ -7,11 +7,11 @@ Dingen
 Voor de beta
 ----------------------------
 
-- [ ] Na inloggen naar de user pagina ipv naar de klikpagina
+- [x] Na inloggen naar de user pagina ipv naar de klikpagina
 
-- [ ] Als er gezocht wordt naar vrienden, en vervolgens maak je de searchbar leeg dan moeten alle vrienden weer verschijnen.
+- [x] Als er gezocht wordt naar vrienden, en vervolgens maak je de searchbar leeg dan moeten alle vrienden weer verschijnen.
 
-- [ ] User pagina moet functioneel worden, met een overzicht van je kliks etc.
+- [ ] User pagina moet functioneel worden, met een overzicht van je kliks etc. [Thomas]
 
 - [ ] Tutorial moet ingebouwd worden
 
