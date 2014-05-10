@@ -1,1 +1,1 @@
-<h2>Helaas, we konden niemand vinden</h2>
+<h2>We couldn't find anyone...</h2>
