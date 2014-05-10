@@ -63,3 +63,7 @@ span.tags
 .dropdown-menu a {
     cursor:pointer;
 }
+
+#search {
+    width: 100%;
+}

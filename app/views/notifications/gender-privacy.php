@@ -1,4 +1,4 @@
 <div id="gender-privacy" class="alert alert-warning fade in" style="display:none">
     <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
-    <strong>Wieweetje: </strong> Vanwege privacy instellingen van een persoon kan de geslachts filter niet 100% werken.
+    <strong>Attention:</strong> Because of facebook privacysettings it is possible that gender filtering is not 100% accurate.
 </div>

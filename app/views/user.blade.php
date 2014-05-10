@@ -20,9 +20,9 @@
          <div class="well profile">
             <div class="col-sm-12">
                 <div class="col-xs-12 col-sm-8">
-                    <h2><?php echo e($data['name']); ?></h2>
-                    <p><strong>Email:</strong> <a href="mailto:<?php echo $data['email']; ?>"><?php echo $data['email']; ?></a></p>
-                    <p><strong>Facebook ID: </strong> {{$me->profile->uid}}</p>
+                    <h2>{{$data->name}}</h2>
+                    <p><strong>Email:</strong> <a href="mailto:{{$data->email}}">{{$data->email}}</a></p>
+                    <p><strong>Facebook ID: </strong> <a href="http://facebook.com/{{$me->profile->uid}}">{{$me->profile->uid}}</a></p>
                 </div>             
                 <div class="col-xs-12 col-sm-4 text-center">
                     <figure>

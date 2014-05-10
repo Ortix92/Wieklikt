@@ -13,19 +13,21 @@
     </div>   
 </div>    
 <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="col-xs-10 col-sm-10 col-md-6 col-lg-4">
         <div id="search-wrapper" class="form-inline">
-            <div class="form-group">
+            
                 <input id="search" type="text" class="form-control input" placeholder="Search friends..." />
-            </div>
-            <div class="btn-group">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Filter <span class="caret"></span></button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a id="gender-male">Male only</a></li>
-                    <li><a id="gender-female">Female only</a></li>
-                    <li><a id="gender-both">Both</a></li>
-                </ul>
-            </div>
+            
+        </div>
+    </div>
+    <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1">
+        <div class="btn-group">    
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Filter <span class="caret"></span></button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a id="gender-male">Male only</a></li>
+                <li><a id="gender-female">Female only</a></li>
+                <li><a id="gender-both">Both</a></li>
+            </ul>
         </div>
     </div>   
 </div>    
