@@ -1,9 +1,9 @@
 @extends('layouts.base')
 
 @section('navigation-main')
-<li class="active"><a href="/">Profile</a></li>
-<li><a href="app">Click</a></li>
-<li><a href="{{action('ApplicationController@getMatch');}}">Matches</a></li>
+<li class="active"><a href="/"><i class="fa fa-user fa-lg fa-fw"></i> Profile</a></li>
+<li><a href="app"><i class="fa fa-users fa-lg fa-fw"></i> Click</a></li>
+<li><a href="{{action('ApplicationController@getMatch');}}"><i class="fa fa-link fa-lg fa-fw"></i> Matches</a></li>
 @stop
 
 @section('main-body')
@@ -37,12 +37,12 @@
                 <div class="col-xs-12 col-sm-4 emphasis">
                     <h2><strong> {{count($friends)}} </strong></h2>
                     <p><small>Friends</small></p>
-                    <a href="app" class="btn btn-success btn-block"><span class="fa fa-users"></span> Get clicking! </a>
+                    <a href="app" class="btn btn-success btn-block"><i class="fa fa-users fa-lg fa-fw"></i> Get clicking! </a>
                 </div>
                 <div class="col-xs-12 col-sm-4 emphasis">
                     <h2><strong> {{count($me->clickedFriends)}} of 3 </strong></h2>
                     <p><small>Clicks used</small></p>
-                    <a href="clicks" class="btn btn-info btn-block"><span class="fa fa-heart"></span> Clicks </a>
+                    <a href="clicks" class="btn btn-info btn-block"><i class="fa fa-heart fa-lg fa-fw"></i> Clicks </a>
                 </div>
                 <div class="col-xs-12 col-sm-4 emphasis">
                     <h2><strong> {{count($matches)}} </strong></h2>
@@ -57,7 +57,7 @@
                             echo 'Matches!';
                         }?>
                         </small></p>
-                    <a href="{{action('ApplicationController@getMatch');}}" class="btn btn-primary btn-block"><span class="fa fa-link"></span> Matches </a>
+                    <a href="{{action('ApplicationController@getMatch');}}" class="btn btn-primary btn-block"><i class="fa fa-link fa-lg fa-fw"></i> Matches </a>
                 </div>
             </div>
          </div>                 
