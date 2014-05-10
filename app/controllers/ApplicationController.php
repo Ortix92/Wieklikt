@@ -26,7 +26,7 @@ class ApplicationController extends BaseController {
         Session::put("friends", $this->friends);
         $friends = $this->friends;
         shuffle($friends);
-        $smallFriends = array_slice($this->friends, 0, 42);
+        $smallFriends = array_slice($friends, 0, 42);
         if (Auth::check()) {
             return View::make('jList', array('friends' => $smallFriends, 'me' => $this->me));
         } else {
