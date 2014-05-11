@@ -3,7 +3,7 @@
 @section('navigation-main')
     <li><a href="/">Home</a></li>
     <li><a href="/app">Terug naar de app</a></li>
-    <li><a href="/match">Matches</a></li>
+    <li><a href="match">Matches</a></li>
     <li class="active"><a href="match">clicks</a></li>
 @stop
 
@@ -21,8 +21,8 @@
 
     <div class="col-md-4">
             <div>
-                <img class="img-circle img-thumbnail" id="<?php echo $click["clickee"]; ?>" src="https://graph.facebook.com/<?php echo $click["clickee"]; ?>/picture?width=200&height=200 " />
-                <h2>Voornaam Achternaam</h2>
+                <img class="img-circle img-thumbnail" id="<?php echo $click['id']; ?>" src="https://graph.facebook.com/<?php echo $click['id']; ?>/picture?width=200&height=200 " />
+                <h2>{{$click['name']}}</h2>
                 <a href="#" class="btn btn-primary" title="Enlace">Edit</a>
             </div>
         </div>        

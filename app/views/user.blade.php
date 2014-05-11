@@ -40,7 +40,7 @@
                     <a href="app" class="btn btn-success btn-block"><i class="fa fa-users fa-lg fa-fw"></i> Get clicking! </a>
                 </div>
                 <div class="col-xs-12 col-sm-4 emphasis">
-                    <h2><strong> {{count($me->clicks)}} of 3 </strong></h2>
+                    <h2><strong> {{count($clicks)}} of 3 </strong></h2>
                     <p><small>Clicks used</small></p>
                     <a href="app/clicks" class="btn btn-info btn-block"><i class="fa fa-heart fa-lg fa-fw"></i> Clicks </a>
                 </div>
