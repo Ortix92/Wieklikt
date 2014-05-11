@@ -1,9 +1,10 @@
 @extends('layouts.base')
 
 @section('navigation-main')
-<li class="active"><a href="/"><i class="fa fa-user fa-lg fa-fw"></i> Profile</a></li>
-<li><a href="app"><i class="fa fa-users fa-lg fa-fw"></i> Click</a></li>
-<li><a href="{{action('ApplicationController@getMatch');}}"><i class="fa fa-link fa-lg fa-fw"></i> Matches</a></li>
+    <li class="active"><a href="/"><i class="fa fa-user fa-lg fa-fw"></i> Profile</a></li>
+    <li><a href="/app"><i class="fa fa-users fa-lg fa-fw"></i> Click</a></li>
+    <li><a href="{{action('ApplicationController@getClicks');}}"><i class="fa fa-thumb-tack fa-lg fa-fw"></i> Clicks</a></li>
+    <li><a href="{{action('ApplicationController@getMatch');}}"><i class="fa fa-link fa-lg fa-fw"></i> Matches</a></li>
 @stop
 
 @section('main-body')
@@ -37,12 +38,12 @@
                 <div class="col-xs-12 col-sm-4 emphasis">
                     <h2><strong> {{count($friends)}} </strong></h2>
                     <p><small>Friends</small></p>
-                    <a href="app" class="btn btn-success btn-block"><i class="fa fa-users fa-lg fa-fw"></i> Get clicking! </a>
+                    <a href="app" class="btn btn-success btn-block"><i class="fa fa-users fa-lg fa-fw"></i> Start clicking! </a>
                 </div>
                 <div class="col-xs-12 col-sm-4 emphasis">
                     <h2><strong> {{count($me->clicks)}} of 3 </strong></h2>
                     <p><small>Clicks used</small></p>
-                    <a href="app/clicks" class="btn btn-info btn-block"><i class="fa fa-heart fa-lg fa-fw"></i> Clicks </a>
+                    <a href="{{action('ApplicationController@getClicks');}}" class="btn btn-info btn-block"><i class="fa fa-heart fa-lg fa-fw"></i> Clicks </a>
                 </div>
                 <div class="col-xs-12 col-sm-4 emphasis">
                     <h2><strong> {{count($matches)}} </strong></h2>

@@ -1,9 +1,10 @@
 @extends('layouts.base')
 
 @section('navigation-main')
-<li><a href="/"><i class="fa fa-user fa-lg fa-fw"></i> Profile</a></li>
-<li><a href="/app"><i class="fa fa-users fa-lg fa-fw"></i> Click</a></li>
-<li class="active"><a href="match"><i class="fa fa-link fa-lg fa-fw"></i> Matches</a></li>
+    <li><a href="/"><i class="fa fa-user fa-lg fa-fw"></i> Profile</a></li>
+    <li><a href="/app"><i class="fa fa-users fa-lg fa-fw"></i> Click</a></li>
+    <li><a href="{{action('ApplicationController@getClicks');}}"><i class="fa fa-thumb-tack fa-lg fa-fw"></i> Clicks</a></li>
+    <li class="active"><a href="{{action('ApplicationController@getMatch');}}"><i class="fa fa-link fa-lg fa-fw"></i> Matches</a></li>
 @stop
 
 @section('main-body')
