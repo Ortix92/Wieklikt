@@ -12,7 +12,7 @@ class ApplicationController extends BaseController {
         $this->friends = $friendsList['data'];
 
         $this->me = Auth::user();
-        $this->me->clicks = $this->getClicks();
+        $this->me->clicks = $this->getClicks(false);
 
         // Cache data for views
         View::share("matches", $this->getMatch(false));
