@@ -3,7 +3,7 @@
 class ApplicationController extends BaseController {
 
     var $facebook;
-    var $me;
+    var $user;
     var $friends;
 
     public function __construct() {
@@ -11,24 +11,36 @@ class ApplicationController extends BaseController {
         $friendsList = $this->facebook->api('/me/friends?fields=id,name,gender');
         $this->friends = $friendsList['data'];
 
-        $this->me = Auth::user();
-        $this->me->clicks = $this->getClicks(false);
+        $this->user = Auth::user();
 
         // Cache data for views
         View::share("matches", $this->getMatch(false));
+        View::share("clicks", $this->getClicks(false));
         View::share("friends", $this->friends);
-        View::share("me", $this->me);
+        View::share("user", $this->user);
     }
 
     public function getIndex() {
         // Request friend list from Facebook
         // We truncate the friendlist for initial viewing
+//        $clicks = Click::all();
+//
+//        foreach ($clicks as $click) {
+//            $profile = Profile::where("uid", "=", $click->clicker)->get();
+//            var_dump($click->profile);
+//            //var_dump($profile[0]);
+//
+//            $queries = DB::getQueryLog();
+//            $last_query = ($queries);
+//            dd($last_query);
+//        }
+
         Session::put("friends", $this->friends);
         $friends = $this->friends;
         shuffle($friends);
         $smallFriends = array_slice($friends, 0, 42);
         if (Auth::check()) {
-            return View::make('jList', array('friends' => $smallFriends, 'me' => $this->me));
+            return View::make('jList', array('friends' => $smallFriends, 'me' => $this->user));
         } else {
             return Redirect::to('/');
         }
@@ -66,37 +78,14 @@ class ApplicationController extends BaseController {
     }
 
     /**
-     * Extracts all the clicker ID's and puts it in an array
-     * @param object $clicks a Click object
-     * @return array contains all the clicker id's
-     */
-    public function clickersToIdArray($clicks) {
-        $array = array();
-        foreach ($clicks as $click) {
-            $array[] = $click->clicker;
-        }
-        return $array;
-    }
-
-    /**
-     * Gets the profile corresponding to the clicker id
-     * @param object $clicks a Click object
-     * @return mixed an array of all the profile objects
-     */
-    public function getMatchProfile($clicks) {
-        $clickIds = $this->clickersToIdArray($clicks);
-        $profiles = Profile::whereIn('uid', $clickIds)->get();
-        return $profiles;
-    }
-
-    /**
      * Gets the matches
      * @param boolean $view if set to true, method returns a view otherwise it returns the matches
      * @return to the matches page if user logged in. Else to homepage
      */
     public function getMatch($view = true) {
         $clicks = Click::where('clickee', '=', Auth::user()->profile->uid)->get();
-        $profiles = $this->getMatchProfile($clicks);
+        $clickIds = UtilitiesController::object_to_array($clicks, "clicker");
+        $profiles = Profile::whereIn('uid', $clickIds)->get();
 
         if (Auth::check() && $view) {
             return View::make('matches', array('profiles' => $profiles));
@@ -106,20 +95,27 @@ class ApplicationController extends BaseController {
             return $profiles;
         }
     }
+
     /**
-    * YOLO let's try this
-    * @return to the clicks page if user logged in. Else to homepage
-    */
+     * YOLO let's try this
+     * @return to the clicks page if user logged in. Else to homepage
+     */
     public function getClicks($view = true) {
-        $clicks = Click::where('clicker', '=', Auth::user()->profile->uid)->get()->toArray();
+
         if (Auth::check() && $view) {
-            return View::make('clicks', array('clicks' => $clicks));
+            return View::make('clicks');
         } elseif ($view) {
             return Redirect::to("/");
         } else {
-            return $clicks;
+            $clicks = Click::where('clicker', '=', Auth::user()->profile->uid)->get();
+            $clickIds = UtilitiesController::object_to_array($clicks, "clickee");
+            $profiles = FriendsController::clicksToFbProfile($clickIds, $this->friends);
+//            $profiles = Profile::whereIn('uid', $clickIds)->get();
+//            $profiles->clickIds = $clickIds;
+            return $profiles;
         }
     }
+
     /**
      * Load friends inside a json encode object for displaying on the main page
      * Returns 42 random friends when $_GET == "load.random"
