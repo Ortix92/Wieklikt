@@ -17,20 +17,30 @@
     </div>   
 </div>
 <div class="row destacados">
-    <?php if (!empty($clicks)): ?><!-- wel clicks -->
-    <?php foreach ($clicks as $click): ?>
 
-    <div class="col-md-4">
+<?php foreach((array)$clicks as $i=>$click) { ?>
+       <div class="col-md-4">
             <div>
                 <img class="img-circle img-thumbnail" id="<?php echo $click["id"]; ?>" src="https://graph.facebook.com/<?php echo $click["id"]; ?>/picture?width=200&height=200 " />
-                <h2>Voornaam Achternaam</h2>
+                <h2>Voornaam Achternaam {{$i + 1}}</h2>
                 <a href="#" class="btn btn-primary" title="Enlace">Edit</a>
             </div>
-        </div>        
-    <?php endforeach; ?>
-    <?php else: ?><!-- Geen clicks -->
-    <p>You haven't clicked anyone yet! This means you still have 3 clicks remaining!</p>
-    <?php endif; ?>
+        </div>     
+   <?php } 
+   $allowedClicks = 9;
+   for ($i = count((array)$clicks); $i < $allowedClicks ; $i++) { ?>
+  
+       <div class="col-md-4">
+            <div>
+                <img class="img-circle img-thumbnail" id="emptyclick" src="nogniks" />
+                <h2>LEEG {{$i + 1}}</h2>
+                <a href="#" class="btn btn-primary" title="Enlace">Edit</a>
+            </div>
+        </div> 
+<?php } ?>
+
+
+
     <div>{{@Session::get("clicked")}}</div>
     </div>
 @stop
