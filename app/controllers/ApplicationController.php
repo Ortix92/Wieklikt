@@ -3,7 +3,7 @@
 class ApplicationController extends BaseController {
 
     var $facebook;
-    var $me;
+    var $user;
     var $friends;
 
     public function __construct() {
@@ -11,13 +11,13 @@ class ApplicationController extends BaseController {
         $friendsList = $this->facebook->api('/me/friends?fields=id,name,gender');
         $this->friends = $friendsList['data'];
 
-        $this->me = Auth::user();
+        $this->user = Auth::user();
 
         // Cache data for views
         View::share("matches", $this->getMatch(false));
         View::share("clicks", $this->getClicks(false));
         View::share("friends", $this->friends);
-        View::share("me", $this->me);
+        View::share("user", $this->user);
     }
 
     public function getIndex() {
@@ -40,7 +40,7 @@ class ApplicationController extends BaseController {
         shuffle($friends);
         $smallFriends = array_slice($friends, 0, 42);
         if (Auth::check()) {
-            return View::make('jList', array('friends' => $smallFriends, 'me' => $this->me));
+            return View::make('jList', array('friends' => $smallFriends, 'me' => $this->user));
         } else {
             return Redirect::to('/');
         }
