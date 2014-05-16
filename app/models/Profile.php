@@ -2,12 +2,14 @@
 
 class Profile extends Eloquent {
 
+    protected $table = "profiles";
+
     public function user() {
         return $this->belongsTo('User','user_id');
     }
 
-    public function click() {
-        return $this->hasMany('Click','clickee', 'uid');
+    public function clicks() {
+        return $this->hasMany('Click','clicker', 'uid');
     }
 
     /**

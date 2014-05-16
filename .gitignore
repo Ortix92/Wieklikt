@@ -2,8 +2,8 @@
 /app/config/database.php
 /vendor
 composer.phar
-composer.lock
 .DS_Store
 /nbproject
 /app/config/database.php
 .idea/*
+Wieklikt.zip

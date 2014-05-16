@@ -5,45 +5,34 @@
   | Application Routes
   |--------------------------------------------------------------------------
   |
-  | Here is where you can register all of the routes for an application.
-  | It's a breeze. Simply tell Laravel the URIs it should respond to
-  | and give it the Closure to execute when that URI is requested.
+  | Here are all the application routes located
   |
  */
-
-// Route::get('/', function()
-// {
-// 	return View::make('home');
-// });
-//Route::get('/', 'HomeController@showIndex');
-
-/*
-  |--------------------------------------------------------------------------
-  | Facebook Login Route
-  |--------------------------------------------------------------------------
-  |
-  | Here we route the facebook login call to the API
-  |
- */
-
 Route::get('/', function() {
-    $data = array();
+            $data = array();
 
-    if (Auth::check()) {
-        $data = Auth::user();
-        return View::make('user', array('data' => $data));
-    } else {
-        return View::make('home');
-    }
-});
+            if (Auth::check()) {
+                return Redirect::to('user');
+            } else {
+                return View::make('home');
+            }
+        });
 
 Route::get('logout', array('as' => 'logout', function() {
-    Auth::logout();
-    return Redirect::to('/');
-}));
+        Auth::logout();
+        return Redirect::to('/');
+    }));
 
 // Entry point for authentication      
 Route::controller('login', 'FacebookController');
 
 // Entry point for application logic
 Route::controller('app', 'ApplicationController');
+Route::controller('user', 'UserController');
+
+// Entry point for notifications
+Route::controller('util', 'UtilitiesController');
+
+App::missing(function($exception) {
+            return Response::view('errors.404', array(), 404);
+        });
